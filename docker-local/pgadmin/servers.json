@@ -1,0 +1,13 @@
+{
+    "Servers": {
+      "1": {
+        "Name": "company_archive",
+        "Group": "Servers",
+        "Host": "company_archive_pg_container",
+        "Port": 5432,
+        "MaintenanceDB": "postgres",
+        "Username": "root",
+        "SSLMode": "prefer"
+      }
+    }
+  }
