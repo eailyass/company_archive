@@ -28,16 +28,10 @@ WORKDIR /var/www/company_archive
 COPY docker-local/php/entrypoint.sh /usr/local/bin/entrypoint
 RUN chmod +x /usr/local/bin/entrypoint
 
-# Allow to choose skeleton
-ARG SKELETON="symfony/skeleton"
-ENV SKELETON ${SKELETON}
-
-# Allow to use development versions of Symfony
-ARG STABILITY="stable"
-ENV STABILITY ${STABILITY}
-
-# Allow to select skeleton version
-ARG SYMFONY_VERSION="5.4"
-ENV SYMFONY_VERSION ${SYMFONY_VERSION}
+# install symfony cli
+RUN echo 'deb [trusted=yes] https://repo.symfony.com/apt/ /' | tee /etc/apt/sources.list.d/symfony-cli.list
+RUN apt-get update
+RUN apt-get install symfony-cli
 
 ENTRYPOINT ["entrypoint"]
+CMD ["php-fpm"]
