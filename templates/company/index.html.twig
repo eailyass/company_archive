@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}companies{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="title">
+            Liste des sociétés:
+        </div>
+        {% for company in companies %}
+            <div>
+                <div></div>
+                <div> {{ company.name }} </div>
+            </div>
+        {% endfor %}
+        <div><a href="{{ path('app_company_new') }}"> Ajouter une société</a></div>
+    </div>
+{% endblock %}
