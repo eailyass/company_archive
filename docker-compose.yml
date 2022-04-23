@@ -34,17 +34,13 @@ services:
     env_file:
       - ./.env
   node:
-    build:
-      context: .
-      dockerfile: docker-local/node/Dockerfile
+    image: node:14.17.3-alpine
     container_name: node
     working_dir: /app
     environment:
       - NODE_ENV=dev
     volumes:
-      - ./:/app:rw,cached
-    # command: "yarn watch"
-    # command: "tail -f /dev/null"
+      - ./:/app
     links:
       - php
 
