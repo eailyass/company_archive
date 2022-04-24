@@ -5,6 +5,8 @@
         "@symfony/webpack-encore": "^1.7.0",
         "core-js": "^3.0.0",
         "regenerator-runtime": "^0.13.2",
+        "sass": "^1.50.1",
+        "sass-loader": "^12.6.0",
         "webpack-notifier": "^1.6.0"
     },
     "license": "UNLICENSED",
@@ -17,6 +19,8 @@
     },
     "dependencies": {
         "bootstrap": "^4.6.0",
-        "jquery": "^3.5.1"
+        "bootstrap-datepicker": "^1.9.0",
+        "jquery": "^3.5.1",
+        "popper.js": "^1.16.1"
     }
 }

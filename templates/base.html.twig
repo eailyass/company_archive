@@ -1,16 +1,57 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
+	<head>
+		<meta
+		charset="UTF-8">
 
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
-</html>
+		<!--meta http-equiv="X-Frame-Options" content="SAMEORIGIN"-->
+		<meta
+		http-equiv="Cache-Control" content="max-age=86400">
+		<title>
+			{% block title %}
+				{{ app_name }}
+			{% endblock %}
+		</title>
+		{% block stylesheets %}
+			{{ encore_entry_link_tags('app') }}
+		{% endblock %}
+	</head>
+	<body class="bg-light">
+		<nav class="navbar navbar-expand-lg navbar-dark bg-nav-blur justify-content-between sticky-top px-4">
+			<a class="navbar-brand mr-4" href="{{ path('app_company_index') }}">Company archive</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a class="nav-link blend" href="#">{{ 'menu.my_projects'| trans({}, 'common') }}
+							<span class="sr-only">(current)</span>
+						</a>
+					</li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">{{ 'menu.abacus'| trans({}, 'common') }}
+                        </a>
+                    </li>
+				</ul>
+			</div>
+		</nav>
+		<main class="pb-5">
+			{% block alerts %}
+				<div class="container mt-4">
+					{% include "common/_alerts.html.twig" %}
+				</div>
+			{% endblock %}
+			<div class="pb-4 pb-md-0"> {% block body %}{% endblock %}
+				</div>
+			</main>
+			<footer class="fixed-bottom py-2 text-center bg-nav-custom">
+				<small>
+				</small>
+			</footer>
+			{% block javascripts %}
+				{{ encore_entry_script_tags('app') }}
+			{% endblock %}
+		</body>
+	</html>
+</head></html>

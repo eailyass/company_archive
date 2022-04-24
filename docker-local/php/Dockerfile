@@ -1,9 +1,5 @@
 FROM php:8.0.8-fpm
 
-# Install dependencies I need
-# RUN add-apt-repository ppa:libreoffice/ppa
-
-
 RUN apt-get update 
 
 RUN mkdir -p /usr/share/man/man1

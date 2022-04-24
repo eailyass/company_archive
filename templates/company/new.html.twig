@@ -1,12 +1,49 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}companies{% endblock %}
-
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('company') }}
+{% endblock %}
 {% block body %}
     <div class="container">
-        <div class="title">
+        <div class="title h3">
             Ajouter une entreprise:
         </div>
-        {{form(form)}}
+        <div class="my-3">
+            {{form_start(form)}}
+            <div class="form-group">
+                <label for="">{{ form_label(form.name) }}</label>
+                {{form_widget(form.name, {'attr':{ 'class':'form-control' }}) }}
+            </div>
+            <div class="form-group">
+                <label for="">{{ form_label(form.immatriculationDate) }}</label>
+                {{form_widget(form.immatriculationDate, {'attr':{ 'class':'form-control date-picker' }}) }}
+            </div>
+            <div class="form-group">
+                <label for="">{{ form_label(form.immatriculationCity) }}</label>
+                {{form_widget(form.immatriculationCity, {'attr':{ 'class':'form-control' }}) }}
+            </div>
+            <div class="form-group">
+                <label for="">{{ form_label(form.siren) }}</label>
+                {{form_widget(form.siren, {'attr':{ 'class':'form-control' }}) }}
+            </div>
+            <div class="form-group">
+                <label for="">{{ form_label(form.capital) }}</label>
+                {{form_widget(form.capital, {'attr':{ 'class':'form-control' }}) }}
+            </div>
+            <div class="form-group">
+                <label for="">{{ form_label(form.status) }}</label>
+                {{form_widget(form.status, {'attr':{ 'class':'form-control' }}) }}
+            </div>
+            <div class="d-flex">
+                <button type="submit" class="btn-success ml-auto">Valider</button>
+            </div>
+            {{form_end(form)}}
+        </div>
     </div>
+{% endblock %}
+{% block javascripts%}
+    {{ parent() }}
+    {{ encore_entry_script_tags('company') }}
 {% endblock %}

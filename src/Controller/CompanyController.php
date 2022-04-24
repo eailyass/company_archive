@@ -31,6 +31,8 @@ class CompanyController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $repo->add($company);
+            $this->addFlash("success","Entreprise ajoutée avec succés");
+            return $this->redirectToRoute("app_company_index");
         }
         return $this->render('company/new.html.twig', [
             'form' => $form->createView(),

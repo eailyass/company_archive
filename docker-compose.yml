@@ -3,9 +3,6 @@ version: '3.7'
 services:
   # Container for Nginx
   nginx:
-    # We need some configuration for Symfony
-    # Like where error log or access log will
-    # be stored
     build:
       context: .
       dockerfile: ./docker-local/nginx/Dockerfile
@@ -40,7 +37,7 @@ services:
     environment:
       - NODE_ENV=dev
     volumes:
-      - ./:/app
+      - ./:/app:rw,cached
     links:
       - php
 
