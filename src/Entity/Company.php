@@ -33,7 +33,7 @@ class Company
     #[ORM\ManyToOne(targetEntity: Status::class, inversedBy: 'companies')]
     private $status;
 
-    #[ORM\OneToMany(mappedBy: 'company', targetEntity: Address::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'company', targetEntity: Address::class, orphanRemoval: true, cascade: ['persist'] )]
     private $addresses;
 
     public function __construct()

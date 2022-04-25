@@ -1,0 +1,32 @@
+<div class="address-element border p-4">
+    <div class="d-flex">
+        <a href="#" class="ml-auto btn delete-address" role="button" title="supprimer">&#128465;</a>
+    </div>
+        <div class="form-row">
+            <div class="form-group col-2">
+                <label for=""> {{ form_label(address.number) }}</label>
+                {{ form_widget( address.number, { 'attr': {'class' : 'form-control' }} ) }}
+            </div>
+        
+            <div class="form-group col-10">
+                <label for=""> {{ form_label(address.streetType) }}</label>
+                {{ form_widget( address.streetType, { 'attr': {'class' : 'form-control' }} ) }}
+            </div>
+        
+        </div>
+        <div class="form-group">
+            <label for=""> {{ form_label(address.streetName) }}</label>
+            {{ form_widget( address.streetName, { 'attr': {'class' : 'form-control' }} ) }}
+        </div>
+        <div class="form-row">
+            <div class="form-group col-10">
+                <label for=""> {{ form_label(address.city) }}</label>
+                {{ form_widget( address.city, { 'attr': {'class' : 'form-control' }} ) }}
+            </div>
+        
+            <div class="form-group col-2">
+                <label for=""> {{ form_label(address.zipCode) }}</label>
+                {{ form_widget( address.zipCode, { 'attr': {'class' : 'form-control' }} ) }}
+            </div>
+        </div>
+</div>

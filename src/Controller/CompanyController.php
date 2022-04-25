@@ -31,7 +31,23 @@ class CompanyController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $repo->add($company);
-            $this->addFlash("success","Entreprise ajoutée avec succés");
+            $this->addFlash("success","Entreprise ajoutée avec succès");
+            return $this->redirectToRoute("app_company_index");
+        }
+        return $this->render('company/new.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+
+
+    #[Route('/edit/{id}', requirements:['id'=>'\d+'] ,name: 'edit')]
+    public function edit(Request $request, Company $company, CompanyRepository $repo): Response
+    {
+        $form = $this->createForm(CompanyType::class, $company);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $repo->add($company);
+            $this->addFlash("success","Entreprise modifiée avec succès");
             return $this->redirectToRoute("app_company_index");
         }
         return $this->render('company/new.html.twig', [

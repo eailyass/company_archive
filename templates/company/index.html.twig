@@ -10,7 +10,7 @@
         {% for company in companies %}
             <div>
                 <div></div>
-                <div> {{ company.name }} </div>
+                <div> <a href=" {{ path('app_company_edit', {id: company.id}) }} "> {{ company.name }} </a></div>
             </div>
         {% endfor %}
         <div><a href="{{ path('app_company_new') }}"> Ajouter une société</a></div>
