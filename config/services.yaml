@@ -20,13 +20,5 @@ services:
             - '../src/Entity/'
             - '../src/Kernel.php'
     
-    App\EventListener\SnapshotCompany:
-        tags:
-            -
-                # these are the options required to define the entity listener
-                name: 'doctrine.orm.entity_listener'
-                event: 'postUpdate'
-                entity: 'App\Entity\Company'
-
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
