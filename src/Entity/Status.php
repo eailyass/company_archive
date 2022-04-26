@@ -2,10 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\StatusRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\StatusRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: StatusRepository::class)]
 class Status
@@ -13,9 +14,11 @@ class Status
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
+    #[Groups(["snapshot"])]
     private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
+    #[Groups(["snapshot"])]
     private $name;
 
     #[ORM\OneToMany(mappedBy: 'status', targetEntity: Company::class)]

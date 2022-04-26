@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Company;
 use App\Form\CompanyType;
 use App\Repository\CompanyRepository;
+use App\Service\SnapshotService;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -34,7 +35,7 @@ class CompanyController extends AbstractController
             $this->addFlash("success","Entreprise ajoutée avec succès");
             return $this->redirectToRoute("app_company_index");
         }
-        return $this->render('company/new.html.twig', [
+        return $this->render('company/form.html.twig', [
             'form' => $form->createView(),
         ]);
     }
@@ -48,10 +49,21 @@ class CompanyController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $repo->add($company);
             $this->addFlash("success","Entreprise modifiée avec succès");
-            return $this->redirectToRoute("app_company_index");
         }
-        return $this->render('company/new.html.twig', [
+        return $this->render('company/form.html.twig', [
             'form' => $form->createView(),
+        ]);
+    }
+
+    #[Route('/view/{id}', requirements:['id'=>'\d+'] ,name: 'view')]
+    public function view(Request $request, Company $company, SnapshotService $snapshot): Response
+    {
+       $date = $request->query->get('date');
+       if ($date) {
+           $company = $snapshot->restoreCompany($company, \DateTime::createFromFormat("Y-m-d H:i:s",$date));
+       }
+        return $this->render('company/view.html.twig', [
+            'company' => $company,
         ]);
     }
 }

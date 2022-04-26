@@ -1,0 +1,21 @@
+<div class="address-element border p-4">
+    <div class="row">
+        <div class=" col-4">
+            <label for=""> Numéro: {{ address.number }}</label>
+        </div>
+        <div class=" col">
+            <label for=""> Type de voie: {{ constant('App\\Constant\\StreetType::STREETTYPES')[address.streetType] }}</label>
+        </div>
+    </div>
+    <div class="">
+        <label for=""> Nom de voie: {{ address.streetName }}</label>
+    </div>
+    <div class="row">
+        <div class=" col-4">
+            <label for=""> Ville: {{ address.city }}</label>
+        </div>
+        <div class=" col">
+            <label for=""> Code postal: {{ address.zipCode }}</label>
+        </div>
+    </div>
+</div>

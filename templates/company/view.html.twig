@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}companies{% endblock %}
+{% block stylesheets %}
+{{ parent() }}
+{{ encore_entry_link_tags('company') }}
+{% endblock %}
+{% block body %}
+<div class="container">
+    <div class="border p-2 my-2">
+        <div class="title h3">
+            Détails entreprise {{company.name}}:
+        </div>
+        <div class="my-3">
+            <div class="row">
+                <label class="col-4" for="">Nom:</label>
+                <div class="col"> {{ company.name }} </div>
+            </div>
+            <div class="row">
+                <label class="col-4" for="">Date d'immatriculation:</label>
+                <div class="col"> {{ company.immatriculationDate|date("d/m/Y") }} </div>
+            </div>
+            <div class="row">
+                <label class="col-4" for="">Ville d'immatriculation:</label>
+                <div class="col"> {{ company.immatriculationCity }} </div>
+            </div>
+            <div class="row">
+                <label class="col-4" for="">N° SIREN:</label>
+                <div class="col"> {{ company.siren }} </div>
+            </div>
+            <div class="row">
+                <label class="col-4" for="">Capital:</label>
+                <div class="col"> {{ company.capital }} </div>
+            </div>
+            <div class="row">
+                <label class="col-4" for="">Statut:</label>
+                <div class="col"> {{ company.status.name }} </div>
+            </div>
+        </div>
+    </div>
+    <div class="address-wrapper">
+        <div class="d-flex justify-content-between align-items-center my-2 ">
+            <h3 class="">Adresses:</h3>
+        </div>
+        {% for address in company.addresses %}
+        {{ include('company/_view_address.html.twig', {'address':address}) }}
+        {% endfor %}
+    </div>
+    <div class="d-flex mt-2">
+        <button type="submit" class="btn-success ml-auto">Valider</button>
+    </div>
+</div>
+{% endblock %}
+{% block javascripts%}
+{{ parent() }}
+{{ encore_entry_script_tags('company') }}
+{% endblock %}
