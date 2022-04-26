@@ -1,10 +1,16 @@
 import "bootstrap-datepicker"
+import "bootstrap-datetime-picker"
 
 import 'bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css';
+import 'bootstrap-datetime-picker/css/bootstrap-datetimepicker.min.css';
 
 jQuery(function ($) {
     $('.date-picker').datepicker({
         format: "yyyy-mm-dd"
+    });
+
+    $('.date-time-picker').datetimepicker({
+        format: "yyyy-mm-dd hh:ii:ss"
     });
 
     var $wrapper = $(".address-wrapper");
